@@ -2,6 +2,10 @@ async function brewCoffee(coffeeType) {
   const randomDelay = Math.floor(Math.random() * 3000); //delay betweeen 0-3000ms
   const success = Math.random() > 0.3;
 
+  if (typeof coffeeType !== "string" || !coffeeType.trim()) {
+    return Promise.reject(new Error("Invalid coffee type"));
+  }
+
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (success) {
